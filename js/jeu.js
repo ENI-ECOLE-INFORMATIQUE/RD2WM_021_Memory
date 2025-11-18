@@ -58,8 +58,16 @@ function initGame() {
 
     // Crée le plateau
     gameBoard.innerHTML = '';
-    let rows = parseInt(dimension);
-    let cols = rows;
+    console.log('dimension:'+dimension)
+    // Séparer la chaîne en deux parties
+    let [colonnes, lignes] = dimension.split('x').map(Number);
+
+    // Résultat :
+    console.log("Colonnes :", colonnes); // 4
+    console.log("Lignes :", lignes);      // 3
+    
+    let rows = parseInt(lignes);
+    let cols = colonnes;
     let cardIndex = 0;
 
     for (let i = 0; i < rows; i++) {
