@@ -46,8 +46,26 @@
                     <h2>Mes préférences</h2>
                 </div>
                 <div class="card-body">
-                    <p><strong>Plateau préféré :</strong> <span id="preferredPlateau">Aucun</span></p>
-                    <p><strong>Dimension préférée :</strong> <span id="preferredDimension">Aucune</span></p>
+                    <form id="preferencesForm">
+                        <div class="mb-3">
+                            <label for="preferredPlateau" class="form-label"><strong>Plateau préféré :</strong></label>
+                            <select class="form-select" id="preferredPlateau">
+                                <option value="">Choisir un plateau...</option>
+                                <option value="animaux">Animaux</option>
+                                <option value="legumes">Légumes</option>
+                                <option value="scrabble">Lettres Scrabble</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="preferredDimension" class="form-label"><strong>Dimension préférée :</strong></label>
+                            <select class="form-select" id="preferredDimension">
+                                <option value="">Choisir une dimension...</option>
+                                <option value="4x4">4x4 (8 paires)</option>
+                                <option value="6x6">6x6 (18 paires)</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Enregistrer mes préférences</button>
+                    </form>
                 </div>
             </div>
 

@@ -1,11 +1,26 @@
 // Récupère l'utilisateur connecté depuis localStorage
 let currentUser = JSON.parse(localStorage.getItem('currentUser'));
+let users = JSON.parse(localStorage.getItem('users')) || {};
 let scores = JSON.parse(localStorage.getItem('scores')) || {};
 let gameBoard = document.getElementById('gameBoard');
 let scoreDisplay = document.getElementById('scoreDisplay');
 let startGameBtn = document.getElementById('startGame');
 let plateauSelect = document.getElementById('plateau');
 let dimensionSelect = document.getElementById('dimension');
+
+
+if (currentUser && users[currentUser.email]?.preferences) {
+        let preferences = users[currentUser.email].preferences;
+        console.log("Preferences : plateau = "+preferences.plateau);
+        console.log("Preferences : dimension = "+preferences.dimension);
+        if (preferences.plateau) {
+            document.getElementById('plateau').value = preferences.plateau;
+        }
+        if (preferences.dimension) {
+            document.getElementById('dimension').value = preferences.dimension;
+        }
+}
+
 
 // Initialisation du jeu
 function initGame() {
@@ -19,6 +34,9 @@ function initGame() {
     let dimension = dimensionSelect.value;
     let cards = [];
 
+    console.log("Plateau selectionne = "+plateau);
+    console.log("dimension selectionne = "+dimension);
+    
     // Génère les cartes selon le plateau choisi
     switch(plateau) {
         case 'animaux':
@@ -78,3 +96,28 @@ function flipCard() {
 
 // Démarre le jeu
 startGameBtn.addEventListener('click', initGame);
+
+// Exemple : quand la partie est terminée
+function finDePartie(score) {
+    const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+    const users = JSON.parse(localStorage.getItem('users')) || {};
+    const plateau = document.getElementById('plateau').value;
+    const dimension = document.getElementById('dimension').value;
+
+    if (currentUser && users[currentUser.email]) {
+        const newScore = {
+            plateau: plateau,
+            dimension: dimension,
+            score: score,
+            date: new Date().toISOString()
+        };
+
+        if (!users[currentUser.email].scores) {
+            users[currentUser.email].scores = [];
+        }
+
+        users[currentUser.email].scores.push(newScore);
+        localStorage.setItem('users', JSON.stringify(users));
+        alert("Votre score a été enregistré !");
+    }
+}
