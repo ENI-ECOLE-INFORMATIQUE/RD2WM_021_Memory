@@ -1,3 +1,6 @@
-body{
-    background-color: aqua;
+.gradient-bg {
+    background: linear-gradient(to right, #4facfe, #00f2fe);
+    min-height: 100vh;
+    margin: 0;
+    font-family: Arial, sans-serif;
 }

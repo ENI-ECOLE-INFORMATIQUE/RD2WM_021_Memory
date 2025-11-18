@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Memory ENI</title>
+    <title>Connexion - Memory Game</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
 </head>
-<body class="gradient-bg">
+<body>
      <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
         <div class="container">
             <a class="navbar-brand" href="index.html">Memory Game</a>
@@ -25,21 +25,24 @@
     </nav>
 
     <div class="container my-5">
-        <h1 class="text-center mb-4">Bienvenue au Memory Game !</h1>
-        <div class="row">
-            <div class="col-md-6">
-                <img src="images/memory-legume/memory_detail.png" alt="Exemple de Memory" class="img-fluid rounded">
+        <h1 class="text-center mb-4">Connexion</h1>
+        <form id="connexionForm" class="row g-3">
+            <div class="col-md-6 offset-md-3">
+                <div class="mb-3">
+                    <label for="email" class="form-label">Email</label>
+                    <input type="email" class="form-control" id="email" required>
+                </div>
+                <div class="mb-3">
+                    <label for="password" class="form-label">Mot de passe</label>
+                    <input type="password" class="form-control" id="password" required>
+                </div>
+                <button type="submit" class="btn btn-primary w-100">Se connecter</button>
             </div>
-            <div class="col-md-6">
-                <h2>Règles du jeu</h2>
-                <p>Le Memory est un jeu de mémoire où il faut retrouver les paires de cartes identiques en un minimum de coups.</p>
-                <p>Choisis un plateau, retourne les cartes deux par deux, et essaie de faire le meilleur score !</p>
-            </div>
-        </div>
+        </form>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/auth.js"></script>
     <script src="js/script.js"></script>
-    <script  src="js/auth.js"></script>
 </body>
 </html>
