@@ -1,6 +1,346 @@
-.gradient-bg {
-    background: linear-gradient(to right, #4facfe, #00f2fe);
-    min-height: 100vh;
+*, ::before, ::after {
+    box-sizing: border-box;
     margin: 0;
-    font-family: Arial, sans-serif;
+    padding: 0;
 }
+
+body {
+    min-height: 100vh;
+    font-family: lato,Open sans, Helvetica, sans-serif;
+    background: linear-gradient(333deg, #7361FF, #BFFF70);
+    padding: clamp(20px, 5vw, 50px) 20px 10px;
+}
+
+.container {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 30px;
+    background: #212121;
+    color: #f1f1f1;
+    border-radius: 20px;
+    border: 2px solid #ffffffc3;
+}
+.container.shake {
+    animation: shake 0.4s;
+}
+@keyframes shake {
+    33% {
+        transform: translateX(-5px);
+    }
+    66%{
+        transform: translateX(5px);
+    }
+}
+h1, 
+.score,
+.advice{
+    text-align: center;
+    color: #f1f1f1;
+    text-shadow: 1px 1px 2px black;
+}
+
+h1 {
+  font-family: Raleway;
+  font-size: clamp(25px, 7vw, 70px);
+  font-weight: 500;
+}
+
+h1 span {
+  font-weight: 800;
+}
+
+h2 {
+    font-size: 30px;
+    font-family: Raleway, sans-serif;
+    text-align: center;
+}
+
+.contenu-memory-presentation{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 15px;
+}
+.img-memory-presentation{
+    max-width: 300px;
+    
+}
+.zoneImage{
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+}
+
+.input-group {
+    margin-top: 30px;
+}
+label {
+    font-size: 20px;
+    display: block;
+    position: relative;
+}
+
+input {
+    display: block;
+    width: 100%;
+    font-size: 18px;
+    color: #f1f1f1;
+    padding: 10px 0;
+    background: transparent;
+    border: none;
+    outline: 0;
+    border-bottom: 1px solid #f1f1f1;
+}
+input:focus {
+   box-shadow: 0 1px 0px #fff;
+}
+input::placeholder {
+    font-size: 16px;
+}
+.icon-input-container {
+    position: relative;
+}
+.icone-verif {
+    width: 30px;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 0;
+    display: none;
+}
+.error-msg {
+    margin-top: 7px;
+    color: #f75252;
+    font-weight: 400;
+    display: none;
+}
+.pswd-info {
+    margin-top: 8px;
+    color: #a9a9a9;
+    font-weight: 400;
+    display: block;
+}
+.lines {
+    width: 80%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin: 0 auto;
+}
+.l1, .l2, .l3 {
+    height: 5px;
+    margin: 15px 5px 20px;
+    width: 30%;
+    position: relative;
+    display: none;
+}
+.l1 {
+    background-color: #cf5914;
+}
+.l2 {
+    background-color: #fdeb50;
+}
+.l3 {
+    background-color: #14e214;
+}
+.lines span {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 10px;
+}
+
+form button {
+    font-size: 20px;
+    min-width: 150px;
+    display: block;
+    margin: 40px auto 10px;
+    padding: 12px 15px;
+    background-color: #fffcdc;
+    border: 1px solid #f1f1f13d;
+    color: #111;
+    border-radius: 3px;
+    font-family: Raleway;
+    font-weight: 600;
+    cursor: pointer;
+}
+form button:hover {
+    background-color: #e3dfa2;
+}
+
+.bouton{
+    display: flex;
+    justify-content: space-between;
+}
+
+.menu{
+    display: block;
+    max-width: 462px;
+    border-radius: 10px;
+    border: 2px solid #ffffffc3;
+    margin-bottom: 20px;
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+    border-radius: 5px solid #f1f1f1;
+  }
+  
+nav ul li {
+    float: left;
+  }
+  
+nav ul  li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+  }
+  
+  /* Change the link color to #111 (black) on hover */
+ nav ul li a:hover {
+    background-color: #111;
+    border: 1px solid #ffffffc3;
+  }
+
+.regleJeu{
+    margin-left: 19px;
+  }
+
+
+  /**********************************************************/
+  /*                    Carte Memory                        */
+ /**********************************************************/
+.advice {
+  font-size: clamp(16px, 2.5vw, 25px);
+  margin-top: 10px;
+}
+.score {
+  font-size: clamp(16px, 2.5vw, 20px);
+  margin-top: 15px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  max-width: 800px;
+  gap: 10px;
+  margin: 30px auto 0;
+}
+.card {
+  aspect-ratio: 1/1;
+  perspective: 1000px;
+  cursor: pointer;
+  user-select: none;
+  transition: transform 0.2s ease-out;
+}
+.card:hover {
+  transform: scale(1.02)
+}
+.double-face {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  will-change: transform;
+  transition: transform 0.6s;
+  box-shadow: 0 5px 5px rgba(0,0,0,0.3);
+  pointer-events: none;
+}
+.face,
+.back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  border-radius: 5px;
+  background: #f1f1f1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  pointer-events: none;
+}
+.back {
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+.face {
+  transform: rotateY(180deg);
+}
+.face img,
+.back img {
+  width: 60%;
+}
+.active {
+  transform: rotateY(180deg);
+}
+
+aside h2{
+  text-align: center;
+  color: #f1f1f1;
+}
+
+#zoneMeilleureScore{
+  text-align: center;
+  width: 100%;
+}
+
+.meilleureScore{
+  text-align: center;
+  color: #f1f1f1;
+  display: flex;
+  justify-content: center;
+}
+
+.meilleureScore td,.meilleureScore th{
+  border:1px solid white;
+  padding: 10px;
+}
+
+/************************************/
+/*          Profil                  */
+/************************************/
+.zoneAvatar{
+    display: flex;
+    justify-content: center;
+    margin: 10px;
+}
+.avatar{
+    max-width: 100px;
+    border: 1px solid white;
+}
+
+.avatar:hover{
+    border: 1px solid white;
+    box-shadow: 2px 2px 2px white;
+    cursor: pointer;
+
+}
+
+.zoneAvatar img {
+    border-radius: 50%;
+    padding: 5px;
+}
+
+.dernierScore h2{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    text-align: center;
+    color: #f1f1f1;
+    display: flex;
+    justify-content: center;
+}
+
+.dernierScore table{
+    display: flex;
+    justify-content: center;
+    
+}
+.dernierScore td,.dernierScore th{
+    border:1px solid white;
+    padding: 10px;
+  }

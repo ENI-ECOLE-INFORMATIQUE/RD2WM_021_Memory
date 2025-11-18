@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+     <nav class="navbar navbar-expand-lg navbar-dark">
         <div class="container">
             <a class="navbar-brand" href="index.html">Memory Game</a>
             <div class="navbar-nav">
@@ -27,7 +27,78 @@
     <div class="container my-5">
         <h1 class="text-center mb-4">Inscription</h1>
         <form id="inscriptionForm" class="row g-3">
-            <div class="col-md-6 offset-md-3">
+            <div class="input-group">
+            <label for="user">Nom d'utilisateur</label>
+            <div class="icon-input-container">
+              <input 
+              type="text"
+              autocomplete="off"
+              id="user"
+              name="user"
+              placeholder="3 caractères minimum"
+              maxlength="24"
+              >
+              <img src="images/check.svg" alt="icone de validation" class="icone-verif">
+            </div>
+            <span class="error-msg">Choisissez un pseudo contenant au moins 3 caractères.</span>
+          </div>
+  
+          <div class="input-group">
+            <label for="email">Entrez votre email</label>
+            <div class="icon-input-container">
+              <input 
+              type="text"
+              autocomplete="off"
+              id="email"
+              name="email"
+              placeholder="Votre email"
+              >
+              <img src="images/check.svg" alt="icone de validation" class="icone-verif">
+            </div>
+            <span class="error-msg">Rentrez un email valide.</span>
+          </div>
+  
+          <div class="input-group">
+            <label for="password">Mot de passe</label>
+            <div class="icon-input-container">
+              <input 
+              type="password"
+              autocomplete="off"
+              id="password"
+              name="password"
+              placeholder="Votre mot de passe"
+              >
+              <img src="images/check.svg" alt="icone de validation" class="icone-verif">
+            </div>
+            <span class="pswd-info">Au moins un symbole, un chiffre, ainsi que 6 caractères minimum.</span>
+            <div class="lines">
+              <div class="l1"><span>faible</span></div>
+              <div class="l2"><span>moyen</span></div>
+              <div class="l3"><span>fort</span></div>
+            </div>
+          </div>
+  
+          <div class="input-group">
+            <label for="psw-confirmation">Confirmez le mot de passe</label>
+            <div class="icon-input-container">
+              <input 
+              type="password"
+              autocomplete="off"
+              id="psw-confirmation"
+              name="psw-confirmation"
+              placeholder="Confirmez le mot de passe"
+              >
+              <img src="images/check.svg" alt="icone de validation" class="icone-verif">
+            </div>
+          </div>
+  
+            <div class="bouton">
+                <button type="reset" class="btn btn-warning w-80">Annuler</button>
+                <button type="submit" class="btn btn-primary w-80">S'inscrire</button>
+                
+            </div>
+        
+            <!--<div class="col-md-6 offset-md-3">
                 <div class="mb-3">
                     <label for="email" class="form-label">Email</label>
                     <input type="email" class="form-control" id="email" required>
@@ -37,9 +108,11 @@
                     <input type="password" class="form-control" id="password" required>
                 </div>
                 <button type="submit" class="btn btn-primary w-100">S'inscrire</button>
-            </div>
+            </div>-->
         </form>
     </div>
+
+    
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="js/auth.js"></script>
