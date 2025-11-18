@@ -94,6 +94,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 <td>${score.plateau || 'Inconnu'}</td>
                 <td>${score.dimension || 'Inconnu'}</td>
                 <td>${score.score}</td>
+                 td>${score.moves}</td>
                 <td>${new Date(score.date).toLocaleDateString()}</td>
             `;
             bestScores.appendChild(row);
@@ -119,6 +120,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 <td>${game.plateau || 'Inconnu'}</td>
                 <td>${game.dimension || 'Inconnu'}</td>
                 <td>${game.score}</td>
+                <td>${game.moves}</td>
                 <td>${new Date(game.date).toLocaleDateString()}</td>
             `;
             lastGames.appendChild(row);
