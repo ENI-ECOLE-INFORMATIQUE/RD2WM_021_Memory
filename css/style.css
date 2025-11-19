@@ -232,7 +232,7 @@ nav ul  li a {
   margin: 30px auto 0;
 }
 .card {
-  aspect-ratio: 1/1;
+  /*aspect-ratio: 1/1;*/
   perspective: 1000px;
   cursor: pointer;
   user-select: none;

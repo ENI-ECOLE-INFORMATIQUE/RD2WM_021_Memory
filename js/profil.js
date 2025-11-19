@@ -8,8 +8,6 @@ document.addEventListener('DOMContentLoaded', function () {
     let preferredPlateauSelect = document.getElementById('preferredPlateau');
     let preferredDimensionSelect = document.getElementById('preferredDimension');
 
-  
-
     if ((currentUser == null) || users[currentUser.email == null]) {
         console.log("Remove connecté alert");
         if(notConnectedAlert != null){
@@ -22,6 +20,8 @@ document.addEventListener('DOMContentLoaded', function () {
     profileContent.classList.remove('d-none');
     document.getElementById('userEmail').textContent = currentUser.email;
 
+   
+
       // Charge les préférences existantes
     let user = users[currentUser.email];
     if (user.preferences) {
@@ -32,6 +32,11 @@ document.addEventListener('DOMContentLoaded', function () {
             preferredDimensionSelect.value = user.preferences.dimension;
         }
     }
+
+     //Création de la liste déroulante Plateau préféré
+    creerChoixMemory(tableauCorrespondanceMemoryImage,preferredPlateauSelect);
+
+    preferredPlateauSelect.addEventListener("change",afficherChoixPlateau);
     
     // Gestion de l'envoi du formulaire de préférences
     preferencesForm.addEventListener('submit', function(e) {
@@ -125,5 +130,52 @@ document.addEventListener('DOMContentLoaded', function () {
             `;
             lastGames.appendChild(row);
         });
+    }
+
+    function creerChoixMemory(tableau,preferredPlateauSelect){
+       
+    
+        for (const val of tableauCorrespondanceMemoryImage)
+        {
+            var option = document.createElement("option");
+            option.value = val.nom;
+            option.text = val.nomAffiche;
+            if(user.preferences.plateau==val.nom){
+                option.selected="selected";
+            }
+            preferredPlateauSelect.appendChild(option);
+        }
+    
+    }
+
+    function afficherChoixPlateau(){
+        let optionValue=preferredPlateauSelect.options[preferredPlateauSelect.selectedIndex].value;
+        let optionTexte=preferredPlateauSelect.options[preferredPlateauSelect.selectedIndex].text;
+        let image=document.createElement("img");
+        const textePlateauDefaut = "Choisir un plateau...";
+        console.log("Option Texte="+optionTexte);
+        console.log("Option value="+optionValue);
+
+        if(optionTexte != textePlateauDefaut){
+           
+            for (const val of tableauCorrespondanceMemoryImage)
+            {
+                if(val.nom==optionValue){
+                    image.src=val.img;
+                    break;
+                }
+            }
+            
+            image.alt=optionTexte;
+            image.title=optionTexte;
+            image.className="img-memory-presentation";
+        }
+        //Suppression de l'image en cours si ell est présente
+        if(document.querySelector('.img-memory-presentation')!=null){
+            document.querySelector('.img-memory-presentation').remove();
+        }
+        if(optionTexte != textePlateauDefaut){
+            document.getElementById("zoneImage").appendChild(image);
+        }
     }
 });

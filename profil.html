@@ -26,7 +26,9 @@
 
     <div class="container my-5">
         <h1 class="text-center mb-4">Mon Profil</h1>
-
+        <div class="zoneAvatar">
+            <img src="./images/question.svg" class="avatar">
+        </div>
         <div id="notConnectedAlert" class="alert alert-warning d-none">
             Vous n'êtes pas connecté. <a href="connexion.html">Connectez-vous</a> pour accéder à votre profil.
         </div>
@@ -38,6 +40,7 @@
                 </div>
                 <div class="card-body">
                     <p><strong>Email :</strong> <span id="userEmail"></span></p>
+                    <p><strong>Nom :</strong> <span id="userNom"></span></p>
                 </div>
             </div>
 
@@ -51,10 +54,11 @@
                             <label for="preferredPlateau" class="form-label"><strong>Plateau préféré :</strong></label>
                             <select class="form-select" id="preferredPlateau">
                                 <option value="">Choisir un plateau...</option>
-                                <option value="animaux">Animaux</option>
+                                <!--<option value="animaux">Animaux</option>
                                 <option value="legumes">Légumes</option>
-                                <option value="scrabble">Lettres Scrabble</option>
+                                <option value="scrabble">Lettres Scrabble</option>-->
                             </select>
+                            <div id="zoneImage" class="zoneImage"></div>
                         </div>
                         <div class="mb-3">
                             <label for="preferredDimension" class="form-label"><strong>Dimension préférée :</strong></label>
