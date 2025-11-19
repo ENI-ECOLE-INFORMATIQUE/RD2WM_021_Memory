@@ -62,6 +62,7 @@ document.addEventListener('DOMContentLoaded', function () {
     function afficherProfil(currentUser, users) {
         const user = users[currentUser.email];
         document.getElementById('userEmail').textContent = currentUser.email;
+        document.getElementById('userNom').textContent = user.nom;
 
         // Affiche les préférences existantes
         if (user.preferences) {
@@ -157,7 +158,6 @@ document.addEventListener('DOMContentLoaded', function () {
         console.log("Option value="+optionValue);
 
         if(optionTexte != textePlateauDefaut){
-           
             for (const val of tableauCorrespondanceMemoryImage)
             {
                 if(val.nom==optionValue){

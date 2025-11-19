@@ -1,7 +1,8 @@
 // Gestion de l'inscription (déjà présente)
-document.getElementById('inscriptionForm')?.addEventListener('submit', function(e) {
+document.getElementById('inscriptionForm')?.addEventListener('submit', async function(e) {
     e.preventDefault();
     let email = document.getElementById('email').value;
+    let nom = document.getElementById('user').value;
     let password = document.getElementById('password').value;
     let users = JSON.parse(localStorage.getItem('users')) || {};
     console.log("users="+users);
@@ -9,9 +10,13 @@ document.getElementById('inscriptionForm')?.addEventListener('submit', function(
         alert("Un utilisateur avec cet email existe déjà.");
         return;
     }
+    //Hache le mot de passe
+    const hashedPassword = await hashPassword(password);
 
+    //Stocke le mot de passe haché
     users[email] = {
-        password: password,
+        nom: nom,
+        password: hashedPassword, //mot de passe haché
         scores: [],
         preferences: {}
     };
@@ -24,13 +29,29 @@ document.getElementById('inscriptionForm')?.addEventListener('submit', function(
 });
 
 // Gestion de la connexion
-document.getElementById('connexionForm')?.addEventListener('submit', function(e) {
+document.getElementById('connexionForm')?.addEventListener('submit', async function(e) {
     e.preventDefault();
     let email = document.getElementById('email').value;
     let password = document.getElementById('password').value;
     let users = JSON.parse(localStorage.getItem('users')) || {};
 
-    if (!users[email] || users[email].password !== password) {
+
+    if (!users[email]) {
+        alert("Email ou mot de passe incorrect.");
+        return;
+    }
+
+    // // Hache le mot de passe saisi
+    // const hashedPassword = await hashPassword(password);
+
+    // // Compare avec le mot de passe haché stocké
+    // if (users[email].password !== hashedPassword) {
+    //     alert("Email ou mot de passe incorrect.");
+    //     return;
+    // }
+
+    const isValid = await verifyPassword(email, password);
+    if (!isValid) {
         alert("Email ou mot de passe incorrect.");
         return;
     }
