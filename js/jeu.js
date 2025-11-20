@@ -29,6 +29,37 @@ if (currentUser && users[currentUser.email]?.preferences) {
 }
 
 
+function afficherChoixPlateau(){
+    //TODO à finir pour faire afficher les différents plateaux.
+    let optionValue=preferredPlateauSelect.options[preferredPlateauSelect.selectedIndex].value;
+    let optionTexte=preferredPlateauSelect.options[preferredPlateauSelect.selectedIndex].text;
+    let image=document.createElement("img");
+    const textePlateauDefaut = "Choisir un plateau...";
+    console.log("Option Texte="+optionTexte);
+    console.log("Option value="+optionValue);
+
+    if(optionTexte != textePlateauDefaut){
+        for (const val of tableauCorrespondanceMemoryImage)
+        {
+            if(val.nom==optionValue){
+                image.src=val.img;
+                break;
+            }
+        }
+        
+        image.alt=optionTexte;
+        image.title=optionTexte;
+        image.className="img-memory-presentation";
+    }
+    //Suppression de l'image en cours si ell est présente
+    if(document.querySelector('.img-memory-presentation')!=null){
+        document.querySelector('.img-memory-presentation').remove();
+    }
+    if(optionTexte != textePlateauDefaut){
+        document.getElementById("zoneImage").appendChild(image);
+    }
+}
+
 // Initialisation du jeu
 function initGame() {
     if (!currentUser) {

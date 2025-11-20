@@ -24,10 +24,10 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
 
-    document.getElementById('deconnexion')?.addEventListener('click', function () {
-        localStorage.removeItem('currentUser');
-        alert("Vous êtes déconnecté.");
-        window.location.href = "index.html";
-    });
+    // document.getElementById('deconnexion')?.addEventListener('click', function () {
+    //     localStorage.removeItem('currentUser');
+    //     alert("Vous êtes déconnecté.");
+    //     window.location.href = "index.html";
+    // });
 });
 
